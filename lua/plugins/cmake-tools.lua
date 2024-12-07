@@ -1,14 +1,16 @@
 return {
   "Civitasv/cmake-tools.nvim",
-  requires = { "nvim-lua/plenary.nvim" },
+  ft = { "cpp", "c", "h", "hpp" },
+  dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
   config = function()
     require("cmake-tools").setup({
-      -- lua/plugins/cmake-tools.lua
-      cmake_command = "cmake", -- Default CMake command
-      build_dir = "build", -- Directory where build files are generated
-      build_type = "Debug", -- Build type
-      on_build_finished = function()
-        -- Optional callback after build finishes
+      cmake_command = "cmake",
+      build_dir = "build",
+      build_type = "Debug",
+      on_config_done = function()
+        if pcall(require, "telescope") then
+          require("cmake-tools").register_telescope_functions()
+        end
       end,
     })
   end,
