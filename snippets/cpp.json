@@ -1,0 +1,87 @@
+{
+  "Main Function": {
+    "prefix": "main",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "using namespace std;",
+      "",
+      "int main(${1:int argc}, ${2:char** argv}) {",
+      "    ios_base::sync_with_stdio(false);",
+      "    cin.tie(NULL);",
+      "    ${0:// code here}",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Basic C++ main function with fast IO"
+  },
+  "Cout Line": {
+    "prefix": "cl",
+    "body": "cout << ${1:message} << \"\\n\";",
+    "description": "Print a line using std::cout"
+  },
+  "Cerr Debug": {
+    "prefix": "cd",
+    "body": "cerr << \"[DEBUG] \" << ${1:var} << \"\\n\";",
+    "description": "Print debug message to stderr"
+  },
+  "For Loop (i)": {
+    "prefix": "fori",
+    "body": [
+      "for (size_t i = 0; i < ${1:n}; ++i) {",
+      "    ${0:// body}",
+      "}"
+    ],
+    "description": "A standard for loop iterating from 0 to n-1"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "    ${0:// body}",
+      "}"
+    ],
+    "description": "If statement"
+  },
+  "If-Else Statement": {
+    "prefix": "ife",
+    "body": [
+      "if (${1:condition}) {",
+      "    ${2:// if body}",
+      "} else {",
+      "    ${0:// else body}",
+      "}"
+    ],
+    "description": "If-else statement"
+  },
+  "Function": {
+    "prefix": "fun",
+    "body": [
+      "${1:return_type} ${2:function_name}(${3:parameters}) {",
+      "    ${0:// body}",
+      "}"
+    ],
+    "description": "Define a function"
+  },
+  "Class": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName} {",
+      "public:",
+      "    ${1:ClassName}() {",
+      "        ${0:// constructor body}",
+      "    }",
+      "private:",
+      "};"
+    ],
+    "description": "Create a new class"
+  },
+  "Struct": {
+    "prefix": "struct",
+    "body": [
+      "struct ${1:StructName} {",
+      "    ${0:// struct body}",
+      "};"
+    ],
+    "description": "Create a new struct"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "Print Variable": {
+    "prefix": "pv",
+    "body": "print(${1:variable})",
+    "description": "Print a variable using Lua's print function"
+  },
+  "Lua Function": {
+    "prefix": "fn",
+    "body": [
+      "function ${1:function_name}(${2:args})",
+      "  ${0:-- body}",
+      "end"
+    ],
+    "description": "Create a Lua function"
+  },
+  "Local Variable Assignment": {
+    "prefix": "lv",
+    "body": "local ${1:name} = ${2:value}",
+    "description": "Define a local variable"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition} then",
+      "  ${0:-- body}",
+      "end"
+    ],
+    "description": "Basic if statement"
+  },
+  "If-Else Statement": {
+    "prefix": "ife",
+    "body": [
+      "if ${1:condition} then",
+      "  ${2:-- body}",
+      "else",
+      "  ${0:-- else branch}",
+      "end"
+    ],
+    "description": "If-else statement"
+  }
+}
