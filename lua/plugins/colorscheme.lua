@@ -3,7 +3,7 @@ return {
   opts = {
     colorscheme = function()
       require("catppuccin").setup({
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
+        flavour = "mocha",
         custom_highlights = {},
         default_integrations = true,
         integrations = {

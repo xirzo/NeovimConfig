@@ -36,6 +36,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-refactor",
+    event = "VeryLazy",
   },
   {
     "nvim-telescope/telescope.nvim",

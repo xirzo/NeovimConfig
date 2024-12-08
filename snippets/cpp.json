@@ -2,12 +2,13 @@
   "Main Function": {
     "prefix": "main",
     "body": [
-      "#include <bits/stdc++.h>",
-      "using namespace std;",
+      "#include <iostream>",
+      "#include <cstdint>",
       "",
-      "int main(${1:int argc}, ${2:char** argv}) {",
-      "    ios_base::sync_with_stdio(false);",
-      "    cin.tie(NULL);",
+      "int32_t main() {",
+      "    std::ios_base::sync_with_stdio(false);",
+      "    std::cin.tie(nullptr);",
+      "    std::cout.tie(nullptr);",
       "    ${0:// code here}",
       "    return 0;",
       "}"
@@ -16,19 +17,42 @@
   },
   "Cout Line": {
     "prefix": "cl",
-    "body": "cout << ${1:message} << \"\\n\";",
+    "body": "std::cout << ${1:message} << \"\\n\";",
     "description": "Print a line using std::cout"
   },
-  "Cerr Debug": {
-    "prefix": "cd",
-    "body": "cerr << \"[DEBUG] \" << ${1:var} << \"\\n\";",
-    "description": "Print debug message to stderr"
+  "Cin n": {
+    "prefix": "cinn",
+    "body": [
+      "int32_t n;",
+      "std::cin<< n;"
+    ],
+    "description": "Get std::cin"
+  },
+  "Deletion": {
+    "prefix": "del",
+    "body": [
+      "for (size_t i = 0; i < ${1:n}; ++i) {",
+      "    delete[] ${0}[i]",
+      "}",
+      "",
+      "delete[] ${0}"
+    ],
+    "description": "Basic C++ main function with fast IO"
   },
   "For Loop (i)": {
     "prefix": "fori",
     "body": [
       "for (size_t i = 0; i < ${1:n}; ++i) {",
-      "    ${0:// body}",
+      "    ${0}",
+      "}"
+    ],
+    "description": "A standard for loop iterating from 0 to n-1"
+  },
+  "For Loop Backwards(length)": {
+    "prefix": "forb",
+    "body": [
+      "for (size_t i = ${1}-1; i >= 0; --i) {",
+      "    ${2}",
       "}"
     ],
     "description": "A standard for loop iterating from 0 to n-1"
@@ -41,17 +65,6 @@
       "}"
     ],
     "description": "If statement"
-  },
-  "If-Else Statement": {
-    "prefix": "ife",
-    "body": [
-      "if (${1:condition}) {",
-      "    ${2:// if body}",
-      "} else {",
-      "    ${0:// else body}",
-      "}"
-    ],
-    "description": "If-else statement"
   },
   "Function": {
     "prefix": "fun",
