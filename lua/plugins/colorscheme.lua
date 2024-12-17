@@ -19,12 +19,34 @@ return {
         },
       })
 
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
+    end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+  },
+
+  {
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nordic").load()
+    end,
+  },
+
+  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      vim.cmd("colorscheme rose-pine")
     end,
   },
 
   {
-    "catppuccin/nvim",
+    "catppuccin.nvim",
     name = "catppuccin",
     priority = 1000,
   },

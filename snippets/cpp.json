@@ -28,21 +28,32 @@
     ],
     "description": "Get std::cin"
   },
+  "Creation": {
+    "prefix": "crarr",
+    "body": [
+      "${0}** ${1} = new ${0}*[${3}];",
+      "for (size_t i = 0; i < ${3}; ++i) {",
+      "    ${1}[i] = new ${0}[${3}];",
+      "}",
+      ""
+    ],
+    "description": "Basic C++ main function with fast IO"
+  },
   "Deletion": {
     "prefix": "del",
     "body": [
       "for (size_t i = 0; i < ${1:n}; ++i) {",
-      "    delete[] ${0}[i]",
+      "    delete[] ${0}[i];",
       "}",
       "",
-      "delete[] ${0}"
+      "delete[] ${0};"
     ],
     "description": "Basic C++ main function with fast IO"
   },
   "For Loop (i)": {
     "prefix": "fori",
     "body": [
-      "for (size_t i = 0; i < ${1:n}; ++i) {",
+      "for (size_t ${1} = 0; ${1} < ${2}; ++${1}) {",
       "    ${0}",
       "}"
     ],
