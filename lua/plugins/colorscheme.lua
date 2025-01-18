@@ -25,7 +25,6 @@ return {
   {
     "rebelot/kanagawa.nvim",
   },
-
   {
     "AlexvZyl/nordic.nvim",
     lazy = false,
@@ -41,7 +40,8 @@ return {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()
-      vim.cmd("colorscheme elflord")
+      -- vim.cmd("colorscheme elflord")
+      vim.cmd("colorscheme moonfly")
     end,
   },
 
