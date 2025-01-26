@@ -1,26 +1,26 @@
 return {
-  "LazyVim/LazyVim",
-  opts = {
-    colorscheme = function()
-      require("catppuccin").setup({
-        flavour = "mocha",
-        custom_highlights = {},
-        default_integrations = true,
-        integrations = {
-          cmp = true,
-          gitsigns = true,
-          nvimtree = true,
-          treesitter = true,
-          notify = false,
-          mini = {
-            enabled = true,
-            indentscope_color = "",
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = function()
+        require("catppuccin").setup({
+          flavour = "mocha",
+          custom_highlights = {},
+          default_integrations = true,
+          integrations = {
+            cmp = true,
+            gitsigns = true,
+            nvimtree = true,
+            treesitter = true,
+            notify = false,
+            mini = {
+              enabled = true,
+              indentscope_color = "",
+            },
           },
-        },
-      })
-
-      -- vim.cmd.colorscheme("catppuccin")
-    end,
+        })
+      end,
+    },
   },
   {
     "rebelot/kanagawa.nvim",
@@ -33,20 +33,21 @@ return {
       require("nordic").load()
     end,
   },
-
-  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
-
+  {
+    "bluz71/vim-moonfly-colors",
+    name = "moonfly",
+    lazy = false,
+    priority = 1000,
+  },
   {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()
-      -- vim.cmd("colorscheme elflord")
       vim.cmd("colorscheme moonfly")
     end,
   },
-
   {
-    "catppuccin.nvim",
+    "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
   },

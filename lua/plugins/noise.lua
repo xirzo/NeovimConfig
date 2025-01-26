@@ -1,8 +1,13 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
-  -- enabled = false,
+
   opts = {
+    cmdline = {
+      enabled = true,
+      view = "cmdline_popup",
+    },
+
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
