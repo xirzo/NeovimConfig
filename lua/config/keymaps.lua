@@ -10,4 +10,4 @@ local opts = { noremap = true, silent = true }
 keymap.set("n", "<tab>", ":bnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":bprev<Return>", opts)
 keymap.set("n", "<s-q>", ":bp|bd #<Return>", opts)
-keymap.set("n", "<s-b>", ":CMakeBuild <Return>", opts)
+keymap.set("n", "<s-b>", ":BuildProject<Return>", { desc = "Build Project" })
