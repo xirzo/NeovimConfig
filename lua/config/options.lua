@@ -4,7 +4,7 @@
 
 local opt = vim.opt
 
-opt.mouse = ""
+-- opt.mouse = ""
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.tabstop = 4
