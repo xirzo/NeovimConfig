@@ -50,7 +50,7 @@ return {
     keys = {
       { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
       { "<leader>fg", "<cmd>Telescope git_files<CR>", desc = "Find Git Files" },
-      { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
+      { "<leader><space>", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
       { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help Tags" },
       { "<leader>fgp", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
     },
@@ -91,7 +91,7 @@ return {
       local ok, telescope = pcall(require, "telescope")
       if ok then
         telescope.setup(opts)
-        -- Check if the extensions table exists and contains the 'fzf' key
+
         if opts.extensions and opts.extensions.fzf then
           telescope.load_extension("fzf")
         end
