@@ -29,9 +29,6 @@ return {
     "AlexvZyl/nordic.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require("nordic").load()
-    end,
   },
   {
     "bluz71/vim-moonfly-colors",
@@ -40,10 +37,14 @@ return {
     priority = 1000,
   },
   {
+    "blazkowolf/gruber-darker.nvim",
+    name = "gruber-darker",
+  },
+  {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()
-      vim.cmd("colorscheme moonfly")
+      vim.cmd("colorscheme gruber-darker")
     end,
   },
   {
