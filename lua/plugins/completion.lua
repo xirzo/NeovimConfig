@@ -32,7 +32,10 @@ return {
     },
 
     opts = {
-      -- previous configurations remain the same until keymap
+      cmdline = {
+        enabled = false,
+      },
+
       snippets = {
         preset = "luasnip",
       },
@@ -69,20 +72,6 @@ return {
             end,
           },
         },
-      },
-
-      cmdline = {
-        enabled = true,
-        -- sources = function()
-        --   local type = vim.fn.getcmdtype()
-        --   -- if type == "/" or type == "?" then
-        --   --   return { "buffer" }
-        --   -- end
-        --   if type == ":" or type == "@" then
-        --     return { "cmdline" }
-        --   end
-        --   return {}
-        -- end,
       },
 
       keymap = {
