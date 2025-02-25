@@ -9,3 +9,5 @@ opt.expandtab = true
 opt.shiftwidth = 4
 opt.tabstop = 4
 opt.smartindent = true
+
+vim.g.snacks_animate = false
