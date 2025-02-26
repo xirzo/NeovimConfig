@@ -80,8 +80,8 @@ return {
         ["<C-k>"] = { "select_prev" },
         ["<C-y>"] = { "select_and_accept" },
         ["<CR>"] = { "accept", "fallback" },
-        ["<Tab>"] = { "snippet_forward", "fallback" },
-        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" }, -- Modified this line to check for completion menu first
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" }, -- Modified for consistency
         ["<C-Space>"] = { "show", "show_documentation" },
         ["<C-e>"] = { "cancel", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
