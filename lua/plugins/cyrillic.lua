@@ -3,7 +3,7 @@ return {
   event = { "VeryLazy" },
   config = function()
     require("cyrillic").setup({
-      no_cyrillic_abbrev = false, -- default
+      no_cyrillic_abbrev = false,
     })
   end,
 }

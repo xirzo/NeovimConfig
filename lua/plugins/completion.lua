@@ -80,8 +80,8 @@ return {
         ["<C-k>"] = { "select_prev" },
         ["<C-y>"] = { "select_and_accept" },
         ["<CR>"] = { "accept", "fallback" },
-        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" }, -- Modified this line to check for completion menu first
-        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" }, -- Modified for consistency
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
         ["<C-Space>"] = { "show", "show_documentation" },
         ["<C-e>"] = { "cancel", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
@@ -90,7 +90,6 @@ return {
     },
 
     config = function(_, opts)
-      -- Rest of the config remains the same
       local enabled = opts.sources.default
       for _, source in ipairs(opts.sources.compat or {}) do
         opts.sources.providers[source] = vim.tbl_deep_extend(
