@@ -117,33 +117,4 @@ return {
       end
     end,
   },
-  -- {
-  --   "ahmedkhalf/project.nvim",
-  --   lazy = true,
-  --   config = function()
-  --     require("project_nvim").setup({
-  --       detection_methods = { "pattern", "lsp" },
-  --       patterns = { ".git", "Makefile", "package.json", ".hg", ".svn" },
-  --       exclude_dirs = { "~/.cache/*", "node_modules" },
-  --       show_hidden = true,
-  --     })
-  --   end,
-  -- },
-  {
-    "Civitasv/cmake-tools.nvim",
-    ft = { "cpp", "c", "h", "hpp" },
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-    config = function()
-      require("cmake-tools").setup({
-        cmake_command = "cmake",
-        build_dir = "build",
-        build_type = "Debug",
-        on_config_done = function()
-          if pcall(require, "telescope") then
-            require("cmake-tools").register_telescope_functions()
-          end
-        end,
-      })
-    end,
-  },
 }
