@@ -5,4 +5,8 @@ return {
       position = "right",
     },
   },
+  keys = {
+    { "<leader>e", false },
+    { "<leader>fe", "<cmd>Neotree toggle<cr>", desc = "Explorer NeoTree" },
+  },
 }
