@@ -1,4 +1,5 @@
 return {
+
   {
     "saghen/blink.cmp",
     version = not vim.g.lazyvim_blink_main and "*",
@@ -15,7 +16,7 @@ return {
         version = "v2.*",
         config = function()
           local ls = require("luasnip")
-          require("luasnip.loaders.from_vscode").load({ paths = { "./snippets" } })
+          -- require("luasnip.loaders.from_vscode").load({ paths = { "./snippets" } })
           ls.config.setup({
             history = true,
             updateevents = "TextChanged,TextChangedI",
