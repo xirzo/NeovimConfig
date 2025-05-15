@@ -43,8 +43,14 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-refactor",
       "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
       "ahmedkhalf/project.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        config = function()
+          require("telescope").load_extension("fzf")
+        end,
+      },
     },
     cmd = "Telescope",
     keys = {
