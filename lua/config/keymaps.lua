@@ -11,3 +11,7 @@ keymap.set("n", "<tab>", ":bnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":bprev<Return>", opts)
 keymap.set("n", "<s-q>", ":bp|bd #<Return>", opts)
 keymap.set("n", "<s-b>", ":BuildProject<Return>", { desc = "Build Project" })
+
+vim.keymap.set("x", "p", function()
+  return 'pgv"' .. vim.v.register .. "y"
+end, { expr = true, desc = "Paste without losing register" })
