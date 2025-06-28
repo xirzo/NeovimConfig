@@ -20,3 +20,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 -- Terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
 vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:q<CR>", opts)
+
+-- Compile (plugin) mode
+vim.keymap.set("n", "<s-z>", ":Compile<Return>", { desc = "Compile" })
+vim.keymap.set("n", "<c-z>", ":Recompile<Return>", { desc = "Recompile" })
