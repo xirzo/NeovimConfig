@@ -6,6 +6,11 @@ vim.opt.expandtab = true
 vim.opt.tabstop=4
 vim.opt.shiftwidth=4
 
+-- cursor line indenting
+vim.opt.number = true
+vim.opt.cursorline = true           
+vim.opt.cursorlineopt = 'number'  
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
