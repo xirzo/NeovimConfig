@@ -1,4 +1,5 @@
 local moveline = require('moveline')
+local opts = { noremap = true, silent = true }
 
 -- moving lines with alt
 vim.keymap.set('n', '<M-k>', moveline.up)
@@ -18,3 +19,4 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 
 -- Terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
+vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:q<CR>", opts)
