@@ -1,26 +1,45 @@
-# Clean LazyVim Config
+# Neovim Config
 
-This repository contains my minimal configuration for LazyVim.
+> [!NOTE]
+> Currently does not have any LSP/CMP plugins, maybe will be added later
+
+This repository contains my minimal configuration for [Neovim](https://neovim.io).
 
 ## Installation
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/xirzo/clean-lazyvim-config.git
-   cd clean-lazyvim-config
+   git clone https://github.com/xirzo/NeovimConfig ~/.config/nvim
    ```
 
-2. Ensure the `init.lua` file is in your Neovim configuration directory:
-   ```sh
-   mkdir -p ~/.config/nvim
-   cp init.lua ~/.config/nvim/
-   ```
-
-3. Start Neovim to let LazyVim bootstrap and install the necessary plugins:
+2. Start Neovim to let [lazy.nvim](https://github.com/folke/lazy.nvim) bootstrap and install the necessary plugins:
    ```sh
    nvim
    ```
 
-## Usage
+## Custom Keybindings
 
-Once installed, the configuration will automatically bootstrap LazyVim and load the plugins specified in the `config.lazy` file.
+### Moving Lines
+- `<M-k>` (Normal): Move current line up
+- `<M-j>` (Normal): Move current line down
+- `<M-k>` (Visual): Move selected block up
+- `<M-j>` (Visual): Move selected block down
+
+### Telescope
+- `<leader>ff`: Find files with Telescope
+- `<leader>/`: Live grep with Telescope
+
+### Buffer/Window Navigation
+- `<C-h>`: Move to left window
+- `<C-j>`: Move to window below
+- `<C-k>`: Move to window above
+- `<C-l>`: Move to right window
+
+### Terminal
+- `<Esc>` (in terminal mode): Exit to normal mode
+- `<C-q>` (in terminal mode): Close terminal buffer
+
+### Compile Plugin
+- `<S-z>`: `:Compile`
+- `<C-z>`: `:Recompile`
+
