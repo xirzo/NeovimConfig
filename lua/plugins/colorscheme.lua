@@ -3,22 +3,10 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = function()
-        require("catppuccin").setup({
-          flavour = "mocha",
-          custom_highlights = {},
-          default_integrations = true,
-          integrations = {
-            cmp = true,
-            gitsigns = true,
-            nvimtree = true,
-            treesitter = true,
-            notify = false,
-            mini = {
-              enabled = true,
-              indentscope_color = "",
-            },
-          },
-        })
+        -- vim.cmd("colorscheme rose-pine")
+        -- vim.cmd("colorscheme gruber-darker")
+        -- vim.cmd("colorscheme quiet")
+        vim.cmd("colorscheme moonfly")
       end,
     },
   },
@@ -43,9 +31,6 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    config = function()
-      vim.cmd("colorscheme gruber-darker")
-    end,
   },
   {
     "catppuccin/nvim",
