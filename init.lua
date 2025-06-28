@@ -9,5 +9,10 @@ vim.opt.shiftwidth=4
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- persistent undo
+local undodir = vim.fn.stdpath("state") .. "/undo"
+vim.opt.undodir = undodir
+vim.fn.mkdir(undodir, "p")
+
 require("config.lazy")
 require("keybindings")
