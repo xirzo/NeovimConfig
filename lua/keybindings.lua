@@ -24,3 +24,8 @@ vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:q<CR>", opts)
 -- Compile (plugin) mode
 vim.keymap.set("n", "<s-z>", ":Compile<Return>", { desc = "Compile" })
 vim.keymap.set("n", "<c-z>", ":Recompile<Return>", { desc = "Recompile" })
+
+-- Buffers
+vim.keymap.set("n", "<tab>", ":bnext<Return>", opts)
+vim.keymap.set("n", "<s-tab>", ":bprev<Return>", opts)
+vim.keymap.set("n", "<s-q>", ":bp|bd #<Return>", opts)
