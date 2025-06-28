@@ -11,6 +11,7 @@ vim.g.maplocalleader = "\\"
 
 -- persistent undo
 local undodir = vim.fn.stdpath("state") .. "/undo"
+vim.opt.undofile = true
 vim.opt.undodir = undodir
 vim.fn.mkdir(undodir, "p")
 
