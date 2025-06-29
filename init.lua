@@ -24,4 +24,4 @@ require("config.lazy")
 require("keybindings")
 
 vim.o.background = "dark"
-vim.cmd([[colorscheme moonfly]])
+vim.cmd([[colorscheme gruber-darker]])

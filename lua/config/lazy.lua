@@ -20,6 +20,6 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "colorschemes" },
   },
-  install = { colorscheme = { "moonfly" } },
+  install = { colorscheme = { "" } },
   checker = { enabled = false },
 })
