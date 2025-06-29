@@ -22,3 +22,6 @@ vim.fn.mkdir(undodir, "p")
 
 require("config.lazy")
 require("keybindings")
+
+vim.o.background = "dark"
+vim.cmd([[colorscheme moonfly]])
