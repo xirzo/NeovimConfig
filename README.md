@@ -1,7 +1,7 @@
 # Neovim Config
 
 > [!NOTE]
-> Currently does not have any LSP/CMP plugins, maybe will be added later
+> Completion was added, you may add LSPs through Mason
 
 This repository contains my minimal configuration for [Neovim](https://neovim.io).
 
