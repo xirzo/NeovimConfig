@@ -23,5 +23,8 @@ vim.fn.mkdir(undodir, "p")
 require("config.lazy")
 require("keybindings")
 
+-- no visual wrapping
+vim.opt.wrap = false
+
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruber-darker]])
