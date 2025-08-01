@@ -3,13 +3,17 @@ if not status_ok then
     return
 end
 
-local moveline = require('moveline')
+local move_ok, move = pcall(require, 'move')
+if not move_ok then
+    vim.notify("move plugin not found", vim.log.levels.WARN)
+    return
+end
 
 -- Moving lines with Alt
-vim.keymap.set('n', '<M-k>', moveline.up)
-vim.keymap.set('n', '<M-j>', moveline.down)
-vim.keymap.set('v', '<M-k>', moveline.block_up)
-vim.keymap.set('v', '<M-j>', moveline.block_down)
+vim.keymap.set('n', '<M-k>', ':MoveLine(-1)<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<M-j>', ':MoveLine(1)<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<M-k>', ':MoveBlock(-1)<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<M-j>', ':MoveBlock(1)<CR>', { noremap = true, silent = true })
 
 -- Telescope keymaps
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true, desc = "Find Files" })
