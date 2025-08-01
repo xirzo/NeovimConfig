@@ -36,7 +36,7 @@ local on_attach = function(_, bufnr)
         ["<leader>"] = {
             c = {
                 name = "Code",
-                a = { vim.lsp.buf.code_action, "Code Actions", buffer = bufnr },
+                a = { require("actions-preview").code_actions, "Code Actions", buffer = bufnr },
                 d = { vim.diagnostic.open_float, "Show Diagnostics", buffer = bufnr },
             },
             r = {
@@ -62,3 +62,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
         on_attach(nil, ev.buf)
     end,
 })
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+        border = "rounded",
+        source = "always",
+    },
+})
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or "rounded"
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
