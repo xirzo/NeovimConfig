@@ -33,19 +33,6 @@ vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:q<CR>", { noremap = true, silent = tru
 vim.keymap.set("n", "<s-z>", ":Compile<Return>", { noremap = true, silent = true, desc = "Compile" })
 vim.keymap.set("n", "<c-z>", ":Recompile<Return>", { noremap = true, silent = true, desc = "Recompile" })
 
--- Harpoon setup
-local harpoon = require("harpoon")
-harpoon:setup()
-
-vim.keymap.set("n", "<leader>a", function() harpoon.list:add() end, { desc = "Add File" })
-vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon.list) end, { desc = "Toggle Menu" })
-vim.keymap.set("n", "<C-1>", function() harpoon.list:select(1) end, { desc = "Go to Harpoon 1" })
-vim.keymap.set("n", "<C-2>", function() harpoon.list:select(2) end, { desc = "Go to Harpoon 2" })
-vim.keymap.set("n", "<C-3>", function() harpoon.list:select(3) end, { desc = "Go to Harpoon 3" })
-vim.keymap.set("n", "<C-4>", function() harpoon.list:select(4) end, { desc = "Go to Harpoon 4" })
-vim.keymap.set("n", "<tab>", function() harpoon.list:prev() end, { desc = "Harpoon Prev" })
-vim.keymap.set("n", "<s-tab>", function() harpoon.list:next() end, { desc = "Harpoon Next" })
-
 -- LSP
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
@@ -65,7 +52,7 @@ local on_attach = function(client, bufnr)
                 n = { vim.lsp.buf.rename, "Rename Symbol", buffer = bufnr },
             },
             F = { function() vim.lsp.buf.format { async = true } end, "Format Buffer", buffer = bufnr },
-            e = { vim.diagnostic.open_float, "Show Diagnostics", buffer = bufnr },
+            d = { vim.diagnostic.open_float, "Show Diagnostics", buffer = bufnr },
         },
         g = {
             d = { vim.lsp.buf.definition, "Go to Definition", buffer = bufnr },
