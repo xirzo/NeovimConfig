@@ -25,6 +25,14 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Move Up" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Move Right" })
 
+-- Barbar
+
+vim.keymap.set("n", "<tab>", ":BufferNext<CR>")
+vim.keymap.set("n", "<s-tab>", ":BufferPrevious<CR>")
+
+-- vim.keymap.set("n", "<tab>", ":BufferMoveNext<CR>")
+-- vim.keymap.set("n", "<s-tab>", ":BufferMovePrevious<CR>")
+
 -- Terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit Terminal" })
 vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:q<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
