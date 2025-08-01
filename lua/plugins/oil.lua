@@ -23,8 +23,8 @@ return {
       ["gx"] = "actions.open_external",
       ["g."] = "actions.toggle_hidden",
 
-      ["l"] = "actions.select", -- Use 'l' to enter a directory or open a file
-      ["h"] = "actions.parent", -- Use 'h' to go up to parent directory
+      ["l"] = "actions.select",
+      ["h"] = "actions.parent",
     },
     float = {
       padding = 2,

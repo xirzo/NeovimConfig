@@ -1,66 +1,49 @@
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-    return
+local opts = { noremap = true, silent = true }
+
+local keymaps = {
+    -- Move line
+    { 'n', '<M-k>', ':MoveLine(-1)<CR>', opts },
+    { 'n', '<M-j>', ':MoveLine(1)<CR>', opts },
+    { 'v', '<M-k>', ':MoveBlock(-1)<CR>', opts },
+    { 'v', '<M-j>', ':MoveBlock(1)<CR>', opts },
+    -- Telescope
+    { 'n', '<leader>ff', '<cmd>Telescope find_files<cr>', vim.tbl_extend('force', opts, { desc = "Find Files" }) },
+    { 'n', '<leader>/', '<cmd>Telescope live_grep<cr>', vim.tbl_extend('force', opts, { desc = "Live Grep" }) },
+    -- Buffer navigation
+    { 'n', '<C-h>', '<C-w>h', vim.tbl_extend('force', opts, { desc = "Move Left" }) },
+    { 'n', '<C-j>', '<C-w>j', vim.tbl_extend('force', opts, { desc = "Move Down" }) },
+    { 'n', '<C-k>', '<C-w>k', vim.tbl_extend('force', opts, { desc = "Move Up" }) },
+    { 'n', '<C-l>', '<C-w>l', vim.tbl_extend('force', opts, { desc = "Move Right" }) },
+    -- Barbar
+    { 'n', '<tab>', ':BufferNext<CR>', opts },
+    { 'n', '<s-tab>', ':BufferPrevious<CR>', opts },
+    -- Terminal mode
+    { 't', '<Esc>', '<C-\\><C-n>', vim.tbl_extend('force', opts, { desc = "Exit Terminal" }) },
+    { 't', '<C-q>', '<C-\\><C-n>:q<CR>', vim.tbl_extend('force', opts, { desc = "Close Terminal" }) },
+    -- Compile mode
+    { 'n', '<s-z>', ':Compile<Return>', vim.tbl_extend('force', opts, { desc = "Compile" }) },
+    { 'n', '<c-z>', ':Recompile<Return>', vim.tbl_extend('force', opts, { desc = "Recompile" }) },
+}
+
+for _, keymap in ipairs(keymaps) do
+    vim.keymap.set(keymap[1], keymap[2], keymap[3], keymap[4])
 end
-
-local move_ok, move = pcall(require, 'move')
-if not move_ok then
-    vim.notify("move plugin not found", vim.log.levels.WARN)
-    return
-end
-
--- Moving lines with Alt
-vim.keymap.set('n', '<M-k>', ':MoveLine(-1)<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<M-j>', ':MoveLine(1)<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<M-k>', ':MoveBlock(-1)<CR>', { noremap = true, silent = true })
-vim.keymap.set('v', '<M-j>', ':MoveBlock(1)<CR>', { noremap = true, silent = true })
-
--- Telescope keymaps
-vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true, desc = "Find Files" })
-vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<cr>", { noremap = true, silent = true, desc = "Live Grep" })
-
--- Buffer navigation
-vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "Move Left" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "Move Down" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "Move Up" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "Move Right" })
-
--- Barbar
-
-vim.keymap.set("n", "<tab>", ":BufferNext<CR>")
-vim.keymap.set("n", "<s-tab>", ":BufferPrevious<CR>")
-
--- vim.keymap.set("n", "<tab>", ":BufferMoveNext<CR>")
--- vim.keymap.set("n", "<s-tab>", ":BufferMovePrevious<CR>")
-
--- Terminal mode
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit Terminal" })
-vim.keymap.set("t", "<C-q>", "<C-\\><C-n>:q<CR>", { noremap = true, silent = true, desc = "Close Terminal" })
-
--- Compile (plugin) mode
-vim.keymap.set("n", "<s-z>", ":Compile<Return>", { noremap = true, silent = true, desc = "Compile" })
-vim.keymap.set("n", "<c-z>", ":Recompile<Return>", { noremap = true, silent = true, desc = "Recompile" })
 
 -- LSP
-local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status then
-    return
-end
-
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     local wk = require("which-key")
     wk.register({
         ["<leader>"] = {
             c = {
                 name = "Code",
                 a = { vim.lsp.buf.code_action, "Code Actions", buffer = bufnr },
+                d = { vim.diagnostic.open_float, "Show Diagnostics", buffer = bufnr },
             },
             r = {
                 name = "Refactor",
                 n = { vim.lsp.buf.rename, "Rename Symbol", buffer = bufnr },
             },
             F = { function() vim.lsp.buf.format { async = true } end, "Format Buffer", buffer = bufnr },
-            d = { vim.diagnostic.open_float, "Show Diagnostics", buffer = bufnr },
         },
         g = {
             d = { vim.lsp.buf.definition, "Go to Definition", buffer = bufnr },
@@ -73,5 +56,9 @@ local on_attach = function(client, bufnr)
     }, { buffer = bufnr })
 end
 
-lspconfig.ts_ls.setup({ on_attach = on_attach })
-lspconfig.clangd.setup({ on_attach = on_attach })
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        on_attach(nil, ev.buf)
+    end,
+})
