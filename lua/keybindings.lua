@@ -17,6 +17,7 @@ local keymaps = {
     -- Barbar
     { 'n', '<tab>', ':BufferNext<CR>', opts },
     { 'n', '<s-tab>', ':BufferPrevious<CR>', opts },
+    { 'n', '<s-q>', ':BufferClose<CR>', { desc = 'Close current tab' } },
     -- Terminal mode
     { 't', '<Esc>', '<C-\\><C-n>', vim.tbl_extend('force', opts, { desc = "Exit Terminal" }) },
     { 't', '<C-q>', '<C-\\><C-n>:q<CR>', vim.tbl_extend('force', opts, { desc = "Close Terminal" }) },
