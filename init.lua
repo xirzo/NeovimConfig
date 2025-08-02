@@ -27,4 +27,5 @@ require("keybindings")
 vim.opt.wrap = false
 
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruber-darker]])
+vim.opt.termguicolors = true
+vim.cmd([[colorscheme moonfly]])
