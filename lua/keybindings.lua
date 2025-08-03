@@ -24,6 +24,8 @@ local keymaps = {
     -- Compile mode
     { 'n', '<s-z>', ':Compile<Return>', vim.tbl_extend('force', opts, { desc = "Compile" }) },
     { 'n', '<c-z>', ':Recompile<Return>', vim.tbl_extend('force', opts, { desc = "Recompile" }) },
+    -- LazyGit
+    { 'n', "<leader>gg", "<cmd>LazyGit<cr>", vim.tbl_extend('force', opts, { desc = "Lazy Git" }) },
 }
 
 for _, keymap in ipairs(keymaps) do
