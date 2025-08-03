@@ -25,8 +25,10 @@ local keymaps = {
     { 'n', '<s-z>', ':Compile<Return>', vim.tbl_extend('force', opts, { desc = "Compile" }) },
     { 'n', '<c-z>', ':Recompile<Return>', vim.tbl_extend('force', opts, { desc = "Recompile" }) },
     -- LazyGit
-    { 'n', "<leader>gg", "<cmd>LazyGit<cr>", vim.tbl_extend('force', opts, { desc = "Lazy Git" }) },
+    -- { 'n', "<leader>gg", "<cmd>LazyGit<cr>", vim.tbl_extend('force', opts, { desc = "Lazy Git" }) },
 }
+
+vim.api.nvim_buf_set_keymap(0, 't', '<Esc>', '<Esc>', {noremap = true, silent = true}) 
 
 for _, keymap in ipairs(keymaps) do
     vim.keymap.set(keymap[1], keymap[2], keymap[3], keymap[4])
