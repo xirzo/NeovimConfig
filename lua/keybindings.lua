@@ -37,28 +37,30 @@ end
 -- LSP
 local on_attach = function(_, bufnr)
     local wk = require("which-key")
+    
     wk.register({
-        ["<leader>"] = {
-            c = {
-                name = "Code",
-                a = { require("actions-preview").code_actions, "Code Actions", buffer = bufnr },
-                d = { vim.diagnostic.open_float, "Show Diagnostics", buffer = bufnr },
-            },
-            r = {
-                name = "Refactor",
-                n = { vim.lsp.buf.rename, "Rename Symbol", buffer = bufnr },
-            },
-            F = { function() vim.lsp.buf.format { async = true } end, "Format Buffer", buffer = bufnr },
-        },
-        g = {
-            d = { vim.lsp.buf.definition, "Go to Definition", buffer = bufnr },
-            i = { vim.lsp.buf.implementation, "Go to Implementation", buffer = bufnr },
-            r = { vim.lsp.buf.references, "Find References", buffer = bufnr },
-        },
-        K = { vim.lsp.buf.hover, "Hover Documentation", buffer = bufnr },
-        ["[d"] = { vim.diagnostic.goto_prev, "Previous Diagnostic", buffer = bufnr },
-        ["]d"] = { vim.diagnostic.goto_next, "Next Diagnostic", buffer = bufnr },
-    }, { buffer = bufnr })
+        { "<leader>c", name = "Code", buffer = bufnr, mode = "n" },
+        { "<leader>r", name = "Refactor", buffer = bufnr, mode = "n" },
+    })
+    
+    local lsp_mappings = {
+        ["<leader>F"] = { function() vim.lsp.buf.format { async = true } end, "Format Buffer" },
+        ["<leader>ca"] = { function() require("actions-preview").code_actions() end, "Code Actions" },
+        ["<leader>cd"] = { function() vim.diagnostic.open_float() end, "Show Diagnostics" },
+        ["<leader>rn"] = { function() vim.lsp.buf.rename() end, "Rename Symbol" },
+        ["K"] = { function() vim.lsp.buf.hover() end, "Hover Documentation" },
+        ["[d"] = { function() vim.diagnostic.goto_prev() end, "Previous Diagnostic" },
+        ["]d"] = { function() vim.diagnostic.goto_next() end, "Next Diagnostic" },
+        ["gd"] = { function() vim.lsp.buf.definition() end, "Go to Definition" },
+        ["gi"] = { function() vim.lsp.buf.implementation() end, "Go to Implementation" },
+        ["gr"] = { function() vim.lsp.buf.references() end, "Find References" },
+    }
+    
+    -- Register normal mode mappings
+    wk.register(lsp_mappings, {
+        mode = "n",
+        buffer = bufnr,
+    })
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
