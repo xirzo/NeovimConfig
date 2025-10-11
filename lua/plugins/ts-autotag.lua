@@ -53,6 +53,7 @@ return {
             closing_node_types = {
                 -- jsx
                 "jsx_closing_element",
+                "tsx_closing_element",
 
                 -- xml,
                 "ETag",
