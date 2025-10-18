@@ -34,33 +34,55 @@ for _, keymap in ipairs(keymaps) do
     vim.keymap.set(keymap[1], keymap[2], keymap[3], keymap[4])
 end
 
--- LSP
-local on_attach = function(_, bufnr)
-    local wk = require("which-key")
+local wk = require("which-key")
+
+wk.add({
+    -- Move line mappings
+    { mode = "n", "<M-k>", ":MoveLine(-1)<CR>", desc = "Move Line Up" },
+    { mode = "n", "<M-j>", ":MoveLine(1)<CR>", desc = "Move Line Down" },
+    { mode = "v", "<M-k>", ":MoveBlock(-1)<CR>", desc = "Move Selection Up" },
+    { mode = "v", "<M-j>", ":MoveBlock(1)<CR>", desc = "Move Selection Down" },
     
-    wk.register({
-        { "<leader>c", name = "Code", buffer = bufnr, mode = "n" },
-        { "<leader>r", name = "Refactor", buffer = bufnr, mode = "n" },
-    })
+    -- Telescope mappings
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+    { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
     
-    local lsp_mappings = {
-        ["<leader>F"] = { function() vim.lsp.buf.format { async = true } end, "Format Buffer" },
-        ["<leader>ca"] = { function() require("actions-preview").code_actions() end, "Code Actions" },
-        ["<leader>cd"] = { function() vim.diagnostic.open_float() end, "Show Diagnostics" },
-        ["<leader>rn"] = { function() vim.lsp.buf.rename() end, "Rename Symbol" },
-        ["K"] = { function() vim.lsp.buf.hover() end, "Hover Documentation" },
-        ["[d"] = { function() vim.diagnostic.goto_prev() end, "Previous Diagnostic" },
-        ["]d"] = { function() vim.diagnostic.goto_next() end, "Next Diagnostic" },
-        ["gd"] = { function() vim.lsp.buf.definition() end, "Go to Definition" },
-        ["gi"] = { function() vim.lsp.buf.implementation() end, "Go to Implementation" },
-        ["gr"] = { function() vim.lsp.buf.references() end, "Find References" },
-    }
+    -- Buffer navigation
+    { "<C-h>", "<C-w>h", desc = "Move Left" },
+    { "<C-j>", "<C-w>j", desc = "Move Down" },
+    { "<C-k>", "<C-w>k", desc = "Move Up" },
+    { "<C-l>", "<C-w>l", desc = "Move Right" },
     
-    -- Register normal mode mappings
-    wk.register(lsp_mappings, {
-        mode = "n",
-        buffer = bufnr,
-    })
+    -- Barbar mappings
+    { "<tab>", ":BufferNext<CR>", desc = "Next Buffer" },
+    { "<s-tab>", ":BufferPrevious<CR>", desc = "Previous Buffer" },
+    { "<s-q>", ":BufferClose<CR>", desc = "Close Current Tab" },
+    
+    -- Terminal mode mappings
+    { mode = "t", "<Esc>", "<C-\\><C-n>", desc = "Exit Terminal" },
+    { mode = "t", "<C-q>", "<C-\\><C-n>:q<CR>", desc = "Close Terminal" },
+    
+    -- Compile mappings
+    { "<s-z>", ":Compile<Return>", desc = "Compile" },
+    { "<c-z>", ":Recompile<Return>", desc = "Recompile" },
+
+    { "g", group = "LSP Navigation" },
+
+    -- References subgroup
+    { "gr", group = "References" },
+    { "gri", function() vim.lsp.buf.implementation() end, desc = "Go to Implementation" },
+    { "grt", function() vim.lsp.buf.type_definition() end, desc = "Go to Type Definition" },
+    { "grn", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },
+    { "gra", function() vim.lsp.buf.code_action() end, desc = "Code Action" },
+    { "grr", function() vim.lsp.buf.references() end, desc = "Find References" },
+})
+
+local on_attach = function(client, bufnr)
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
