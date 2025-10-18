@@ -1,7 +1,15 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  opts = { },
+  opts = {
+    layout = {
+      height = { min = 4, max = 25 },
+      width = { min = 20, max = 50 },
+      spacing = 3,
+      align = "left",
+    },
+    delay = 0,
+  },
   keys = {
     {
       "<leader>?",
