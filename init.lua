@@ -30,7 +30,7 @@ vim.opt.wrap = false
 
 vim.o.background = "dark"
 vim.opt.termguicolors = true
-vim.cmd([[colorscheme moonfly]])
+vim.cmd [[colorscheme gruber-darker]]
 
 -- auto format
 vim.api.nvim_create_autocmd("BufWritePre", {
