@@ -66,10 +66,21 @@ wk.add({
     { "<s-z>", ":Compile<Return>", desc = "Compile" },
     { "<c-z>", ":Recompile<Return>", desc = "Recompile" },
 
-    { "g", group = "LSP Navigation" },
-
-    -- References subgroup
-    { "gr", group = "References" },
+    { "<leader>c", desc = "Code", mode = "n" },
+    { "<leader>r", desc = "Refactor", mode = "n" },
+    { "<leader>F", function() vim.lsp.buf.format { async = true } end, desc = "Format Buffer" },
+    { "<leader>ca", function() require("actions-preview").code_actions() end, desc = "Code Actions" },
+    { "<leader>cd", function() vim.diagnostic.open_float() end, desc = "Show Diagnostics" },
+    { "<leader>rn", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },
+    { "K", function() vim.lsp.buf.hover() end, desc = "Hover Documentation" },
+    { "[d", function() vim.diagnostic.goto_prev() end, desc = "Previous Diagnostic" },
+    { "]d", function() vim.diagnostic.goto_next() end, desc = "Next Diagnostic" },
+    { "gd", function() vim.lsp.buf.definition() end, desc = "Go to Definition" },
+    { "gi", function() vim.lsp.buf.implementation() end, desc = "Go to Implementation" },
+    { "gr", function() vim.lsp.buf.references() end, desc = "Find References" },
+    
+    { "g", desc = "LSP Navigation" },
+    { "gr", desc = "References" },
     { "gri", function() vim.lsp.buf.implementation() end, desc = "Go to Implementation" },
     { "grt", function() vim.lsp.buf.type_definition() end, desc = "Go to Type Definition" },
     { "grn", function() vim.lsp.buf.rename() end, desc = "Rename Symbol" },
