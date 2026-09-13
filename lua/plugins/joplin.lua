@@ -18,4 +18,9 @@ return {
       toggle_tree = "<leader>jt",
     },
   },
+  config = function()
+      require("joplin").setup({
+            token_env = "016b34ce388942e207c41afc8b0850f514bdb5b693f84e8dba3ef43c704bdaf56d186cde932d28406cec1fc96e89d454482730265926e7e3adca56a7c310a78e"
+      })
+  end,
 }
