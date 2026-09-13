@@ -1,8 +1,8 @@
 return {
-  'andymass/vim-matchup',
+  "andymass/vim-matchup",
   opts = {
     treesitter = {
       stopline = 500,
-    }
-  }
+    },
+  },
 }

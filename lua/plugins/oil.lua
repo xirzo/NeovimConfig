@@ -1,6 +1,16 @@
 return {
   "stevearc/oil.nvim",
   dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  cmd = { "Oil" },
+  keys = {
+    {
+      "<leader>e",
+      function()
+        require("oil").open()
+      end,
+      desc = "Open oil.nvim file explorer",
+    },
+  },
   opts = {
     default_file_explorer = true,
     view_options = {
@@ -22,7 +32,6 @@ return {
       ["gs"] = "actions.change_sort",
       ["gx"] = "actions.open_external",
       ["g."] = "actions.toggle_hidden",
-
       ["l"] = "actions.select",
       ["h"] = "actions.parent",
     },
@@ -31,15 +40,6 @@ return {
       max_width = 80,
       max_height = 30,
       border = "rounded",
-    },
-  },
-  keys = {
-    {
-      "<leader>e",
-      function()
-        require("oil").open()
-      end,
-      desc = "Open oil.nvim file explorer",
     },
   },
 }

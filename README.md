@@ -1,9 +1,6 @@
 # Neovim Config
 
-> [!NOTE]
-> Completion was added, you may add LSPs through Mason
-
-This repository contains my minimal configuration for [Neovim](https://neovim.io).
+A Neovim port of [VimConfig](https://github.com/xirzo/VimConfig), rebuilt on [lazy.nvim](https://github.com/folke/lazy.nvim) with the closest modern plugin equivalents.
 
 ## Installation
 
@@ -12,66 +9,34 @@ This repository contains my minimal configuration for [Neovim](https://neovim.io
    git clone https://github.com/xirzo/NeovimConfig ~/.config/nvim
    ```
 
-2. Start Neovim to let [lazy.nvim](https://github.com/folke/lazy.nvim) bootstrap and install the necessary plugins:
+2. Start Neovim to let `lazy.nvim` bootstrap and install the plugins:
    ```sh
    nvim
    ```
 
-## Custom Keybindings
+3. (Optional) LSP servers are installed via [Mason](https://github.com/mason-org/mason.nvim):
+   ```sh
+   :Mason
+   ```
 
-### Moving Lines
-- `<M-k>` (Normal): Move current line up
-- `<M-j>` (Normal): Move current line down
-- `<M-k>` (Visual): Move selected block up
-- `<M-j>` (Visual): Move selected block down
+## Keybindings
 
-### Telescope
-- `<leader>ff`: Find files with Telescope
-- `<leader>/`: Live grep with Telescope
+| Keys | Action |
+|---|---|
+| `<Space><Space>` | Clear search highlight |
+| `<leader>y/Y/p/P` | System clipboard yank/paste |
+| `<Tab>` / `<S-Tab>` | Next / previous buffer |
+| `<leader>1`–`<leader>0` | Jump to buffer 1–10 |
+| `<S-q>` / `Q` | Close buffer |
+| `<C-p>` / `<leader>ff` | Find files |
+| `<leader>/` / `:Rg` | Live grep |
+| `<M-k>` / `<M-j>` | Move line / selection up / down |
+| `<S-z>` / `<C-z>` | Compile / recompile |
+| `<F2>` / `<S-F2>` | Next / previous diagnostic |
+| `<F3>` | Syntax highlight stack |
+| `<F5>` / `<F6>` / `<F7>` | Make / dispatch / copen |
+| `K`, `gd`, `gr`, `gi`, `gs` | LSP hover / definition / references / implementation / symbols |
+| `<leader>rn` / `<leader>ca` / `<leader>f` | Rename / code action / format |
+| `<leader>e` | oil file explorer |
+| visual `( { [ " '` | Wrap selection in brackets / quotes |
 
-### Buffer/Window Navigation
-- `<C-h>`: Move to left window
-- `<C-j>`: Move to window below
-- `<C-k>`: Move to window above
-- `<C-l>`: Move to right window
-
-### Barbar (Bufferline)
-- `<Tab>`: Go to next buffer
-- `<S-Tab>`: Go to previous buffer
-- `<S-q>`: Close current buffer/tab
-
-### Terminal Mode
-- `<Esc>` (Terminal): Exit to normal mode
-- `<C-q>` (Terminal): Close terminal buffer
-
-### Compile Plugin
-- `<S-z>`: `:Compile`
-- `<C-z>`: `:Recompile`
-
-### Oil (File Explorer)
-- `<leader>e`: Open Oil file explorer
-- Inside Oil:
-  - `<CR>` or `l`: Open/select file or enter directory
-  - `h` or `-`: Go to parent directory
-  - `_`: Open CWD
-  - `~`: Change to home directory
-  - `gs`: Change sort
-  - `g.`: Toggle hidden files
-  - `<C-s>`: Open in vertical split
-  - `<C-h>`: Open in horizontal split
-  - `<C-t>`: Open in new tab
-  - `<C-p>`: Preview file
-  - `<C-c>`: Close Oil
-  - `<C-l>`: Refresh
-
-### LSP
-- `<leader>c a`: Code Actions
-- `<leader>c d`: Show Diagnostics in a floating window
-- `<leader>r n`: Rename symbol
-- `<leader>F`: Format buffer
-- `gd`: Go to definition
-- `gi`: Go to implementation
-- `gr`: Find references
-- `K`: Hover documentation
-- `[d`: Go to previous diagnostic
-- `]d`: Go to next diagnostic

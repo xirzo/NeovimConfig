@@ -1,8 +1,8 @@
 return {
-  'nativerv/cyrillic.nvim',
-  event = { 'VeryLazy' },
+  "nativerv/cyrillic.nvim",
+  event = "VeryLazy",
   config = function()
-    require('cyrillic').setup({
+    require("cyrillic").setup({
       no_cyrillic_abbrev = false,
     })
   end,
