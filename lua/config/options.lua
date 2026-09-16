@@ -36,7 +36,8 @@ opt.showmatch = true
 opt.matchpairs:append("<:>")
 
 opt.list = true
-opt.listchars = { tab = "▸ ", eol = "¬" }
+-- opt.listchars = { tab = "▸ ", eol = "¬" }
+opt.listchars = { tab = "▸ " }
 
 local undodir = vim.fn.stdpath("state") .. "/undo"
 opt.undofile = true
